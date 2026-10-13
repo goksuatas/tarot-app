@@ -24,3 +24,157 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+.mystic-bg {
+  background: radial-gradient(ellipse at 50% 0%, #4a1a8a 0%, #1a0836 45%, #07020f 100%);
+}
+
+.stars {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    radial-gradient(1.5px 1.5px at 20px 30px, #fff, transparent),
+    radial-gradient(1px 1px at 90px 120px, #e9d5ff, transparent),
+    radial-gradient(1.5px 1.5px at 160px 70px, #fde68a, transparent),
+    radial-gradient(1px 1px at 230px 180px, #fff, transparent);
+  background-size: 260px 220px;
+  animation: twinkle 6s ease-in-out infinite alternate;
+}
+
+@keyframes twinkle {
+  from { opacity: 0.4; }
+  to { opacity: 0.9; }
+}
+
+.scene {
+  perspective: 1100px;
+}
+
+.floaty {
+  animation: floaty 6s ease-in-out infinite;
+}
+
+@keyframes floaty {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-14px); }
+}
+
+.tarot-card {
+ width: 160px;
+height: 260px;
+  border-radius: 18px;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.15s ease-out;
+  background: linear-gradient(145deg, #5b21b6 0%, #2e1065 50%, #1a0536 100%);
+  border: 2px solid #e9c46a;
+  box-shadow:
+    0 0 25px rgba(167, 100, 255, 0.55),
+    0 0 70px rgba(124, 58, 237, 0.45),
+    inset 0 0 30px rgba(233, 196, 106, 0.25);
+}
+
+.tarot-card::before {
+  content: "";
+  position: absolute;
+  inset: 12px;
+  border: 1px solid rgba(233, 196, 106, 0.6);
+  border-radius: 12px;
+}
+
+.tarot-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 18px;
+  background: linear-gradient(115deg, transparent 30%, rgba(255, 255, 255, 0.22) 45%, transparent 60%);
+  background-size: 200% 100%;
+  animation: shine 4s linear infinite;
+}
+
+@keyframes shine {
+  from { background-position: 200% 0; }
+  to { background-position: -200% 0; }
+}
+
+.card-symbol {
+  transform: translateZ(40px);
+  text-shadow: 0 0 20px rgba(233, 196, 106, 0.9);
+}
+.face-card {
+  position: relative;
+  width: 160px;
+  aspect-ratio: 300 / 526;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 2px solid rgba(var(--glow), 0.9);
+  box-shadow:
+    0 0 20px rgba(var(--glow), 0.6),
+    0 0 60px rgba(var(--glow), 0.35);
+  transform-style: preserve-3d;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.face-card:hover {
+  transform: rotateY(12deg) rotateX(-6deg) translateY(-6px) scale(1.04);
+  box-shadow:
+    0 0 30px rgba(var(--glow), 0.85),
+    0 0 90px rgba(var(--glow), 0.5);
+}
+
+.face-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.face-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(115deg, transparent 30%, rgba(255, 255, 255, 0.2) 45%, transparent 60%);
+  background-size: 200% 100%;
+  animation: shine 5s linear infinite;
+  pointer-events: none;
+}
+.flip-inner {
+  position: relative;
+  width: 160px;
+  height: 320px;
+  transform-style: preserve-3d;
+  transition: transform 1s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.flip-face {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.flip-front {
+  transform: rotateY(180deg);
+}
+
+.flip-back-card {
+  width: 160px;
+  height: 280px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(145deg, #5b21b6 0%, #2e1065 50%, #1a0536 100%);
+  border: 2px solid #e9c46a;
+  box-shadow: 0 0 25px rgba(167, 100, 255, 0.55), 0 0 60px rgba(124, 58, 237, 0.4),
+    inset 0 0 30px rgba(233, 196, 106, 0.25);
+}
+
+.soft-pulse {
+  animation: softpulse 2.2s ease-in-out infinite;
+}
+
+@keyframes softpulse {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
